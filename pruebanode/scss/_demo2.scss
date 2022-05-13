@@ -1,0 +1,175 @@
+/* OPERACIONES */
+/***********
+Operadores
++ Suma
+- Resta
+/ División
+* Multiplicación
+**************/
+
+$anchura: 720px;
+
+
+/* anchos*/
+main
+{width: $anchura * 2;
+section {
+    width: $anchura;
+}}
+
+#sectionDos{
+    width: $anchura / 2;
+    div{
+        width: ($anchura / 2) + 60;
+    }
+}
+
+/***************
+EXTENDS Y MIXINS 
+*******************/
+
+// EXTENDS
+
+.boton{
+    width: 250px;
+    height: 70px;
+    background-color: white;
+    text-align: center;
+    color: black;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.boton--nuevo{
+@extend .boton;
+background-color: red;
+}
+
+// MIXINS
+// @mixins nombre (parametro1, parametro2) {
+// propiedad1: parametro1
+// }
+
+@mixin tamanio($anchito, $alturita) {
+    // fragmento que se imprime
+    width: $anchito;
+    height: $alturita;
+    border: solid 1px black;
+}
+
+.caja{
+    @include tamanio(550px, 275px);
+}
+
+.caja-2{
+    @include tamanio(100%, 350px);
+}
+
+.caja-3{
+    @include tamanio(1000px, 30vh);
+}
+
+/* Condicionales */
+
+/*
+1er valor == 2do valor / es válido si es igual a
+1er valor != 2do valor / es válido si es distinto a
+1er valor < 2do valor / es válido si es menor a
+1er valor > 2do valor / es válido si es mayor a
+*/
+// SINTAXIS --> @if condicion { }
+
+$seccion: footer;
+
+p{
+ @if $seccion == section {
+     color: green;
+ }
+ @else if $seccion == div{
+     color: $colorDos;
+ }
+ @else if $seccion == aside{
+     color: $colorTres;
+ }
+ @else {
+     color: $colorCinco;
+ }
+}
+
+// BUCLES 
+// *********************
+// @for $variable inicio fin {
+// bloque de estilos que se repite
+// to -> llega hasta antes de
+// through -> llega hasta lo señalado
+// }
+// #($variable) --> imprme el valor de la variable
+
+@for $bucle from 1 through 6 {
+    // bloque de estilos que se repite
+    .col-#{$bucle}{
+        width: $anchura/$bucle;
+    }
+}
+
+@for $titulo from 1 to 7{
+    h#{$titulo} {
+        font-size: 2.5rem/$titulo;
+
+    }
+}
+
+/*****
+EACH
+*************/
+
+// SINTAXIS --> @each $variable in lista {
+// bloque que se repite
+// }
+
+@each $secciones in valor1, valor2, valor3, valor4, valor10{
+    .fondo-#{$secciones}{
+        background-color: #fff;
+    }
+}
+
+@each $secciones in body, header, main, sectionUno, footer{
+    .fondo-#{$secciones} {
+        background-image: url("image/#{$secciones}.svg");
+    }
+}
+
+/**************
+MAPS
+**************/
+// SINTAXIS
+/* $nombre : (
+    var1: valor 1;
+    var2: valor 2;
+    var3: valor 3;
+    var4: valor 4;
+    var5: valor 5;
+    var6: valor 6;
+    ); */
+/*MAPS*/
+
+$mapa:(
+    /*clave: valor*/
+    twitter: #55acee,
+    facebook: #3a5795,
+    mail: #c25e30,
+    instagram: rgb(143, 52, 143),
+    youtube: red,
+    snapchat: yellow,
+);
+
+//MAPS con each
+// @each clave, valor in $mapa{}
+
+@each $nombres, $colorcito in $mapa{
+    //fragmento que se repite
+    .boton-#{$nombres} {
+        background-color: $colorcito;
+        border: $colorcito;
+    }
+}
