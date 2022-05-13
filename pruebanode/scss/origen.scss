@@ -1,0 +1,1100 @@
+// USANDO SASS
+
+// Variables
+$gris: #EBEBEB;
+$azul: #395173;
+$rosado: #D4696C;
+$verde: #57652A;
+$naranjo: #D9751F;
+$morado: #907BBB;
+$negro: #000000;
+
+$font-stack: 'Montserrat', sans-serif;
+
+/*Aprendiendo a usar MAPS*/
+
+$colores:(
+    "verde": #57652A,
+    "rosado": #D4696C,
+    "naranjo": #D9751F,
+    "morado": #907BBB,
+    "gris": #EBEBEB
+    );
+    
+@function color($search) {
+ @return map-get($colores, $search);
+    }
+    
+@each $colores, $verde in $colores {
+.color-#{$colores} {color: #{$verde}; }
+.bg-#{$colores} {background-color: #{$rosado};}
+}
+
+/*Cuerpo*/
+
+body{
+    background-color: $gris;
+    font-size: $font-stack;
+    color: $azul;
+}
+
+/*Imágenes*/
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+/*Navegación*/
+
+* { box-sizing: border-box; padding: 0; margin: 0; } 
+
+nav { 
+  background: $azul; padding: 5px 20px;
+  ul { 
+    list-style-type: none; 
+  } } 
+
+a {
+  color: $gris; 
+  text-decoration: none;
+  &:hover { 
+    text-decoration: underline; 
+    .logo &:hover { 
+      text-decoration: none; 
+  }  
+  } 
+} 
+
+.menu li { 
+  font-size: 16px; 
+  padding: 15px 5px; 
+  white-space: nowrap; 
+} 
+
+.logo a, .toggle a { 
+  font-size: 20px; 
+} 
+
+.button.secondary { 
+  border-bottom: 1px $rosado solid; 
+}
+
+/*Para móvil*/
+
+.menu { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  align-items: center; } 
+
+.toggle { 
+  order: 1; 
+} 
+
+.item { 
+  width: 100%; 
+  text-align: center; 
+  order: 3; 
+  display: none; 
+  .item.button { 
+    order: 2; 
+    .item.active { 
+    display: block; 
+    }
+  } 
+} 
+
+/*Para tablet*/ 
+
+@media all and (min-width: 600px) { .menu { justify-content: center; } 
+
+.logo { 
+  flex: 1; 
+} 
+
+.toggle { 
+  flex: 1; 
+  text-align: right; 
+} 
+
+.item.button { 
+  width: auto; 
+  order: 1; 
+  display: block; 
+} 
+
+.toggle { 
+  order: 2; 
+} 
+
+.button.secondary { 
+  border: 0; 
+  .button.secondary a {
+   background: transparent; 
+   .button.secondary &:hover { 
+    color: $gris; } 
+  }
+  } 
+} 
+
+.button a { 
+  padding: 7.5px 15px; 
+  background: $rosado; 
+  border: 1px $azul solid; 
+  .button &:hover { 
+    text-decoration: none; 
+  } 
+} 
+
+.button:not(.secondary) a:hover { 
+  background: #D9751F; border-color: #005959; 
+} 
+
+/*Para desktop*/ 
+
+@media all and (min-width: 900px) { .item { display: block; width: auto; } 
+
+.toggle { 
+  display: none; 
+} 
+
+.logo { 
+  order: 0; 
+} 
+
+.item { 
+  order: 1; 
+} 
+
+.button { 
+  order: 2; 
+} 
+
+.menu li { 
+  padding: 15px 10px; 
+  .menu li.button { 
+    padding-right: 0; } 
+  }
+} 
+
+/*Encabezados y aprendiendo a aplicar mixins*/
+
+@mixin encabezado ($fondo) {
+  padding: 64px;
+  margin-top: 50px;
+  margin-bottom: 35px;
+  text-align: center;
+  background: $fondo;
+  color: $gris;
+  font-size: 30px;
+  font-family: $font-stack;
+  h1{
+    font-size: 30px;
+    font-weight: bolder;
+    p{font-size: 20px;
+        font-weight: lighter;}
+  }
+}
+
+.header1{
+    @include encabezado($rosado);
+}
+.header2{
+    @include encabezado($azul);
+}
+.header3{
+    @include encabezado($naranjo);
+}
+.header4{
+    @include encabezado($morado);
+}
+.header5{
+    @include encabezado($verde);
+}
+
+/*Slideshow*/
+
+* {box-sizing: border-box}
+body {font-family: $font-stack; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/*Botones*/
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: $azul;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/*Fondo del botón*/
+.prev:hover, .next:hover {
+  background-color: $gris;
+}
+
+.text {
+  color: $azul;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  background-color: $gris;
+  opacity: 70%;
+}
+
+.numbertext {
+  color: $azul;
+  font-family: $font-stack;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: $rosado;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: $azul;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+/*Display de productos*/
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-card {
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .product-image img {
+    max-width: 100%;
+    cursor:pointer;
+  }
+
+  .product-info {
+    margin-top: auto;
+    font-family:'Montserrat';
+    text-align: center;
+    color: $azul;
+  }
+
+  @media (max-width: 920px) {
+    .product-card {
+      flex: 1 21%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .product-card {
+      flex: 1 46%;
+    }
+  }
+
+/*Footer*/
+
+  footer{
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: $azul;
+    font-family: $font-stack;
+    color: $gris;
+  }
+
+  footer .content{
+    max-width: 1350px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 15px;
+    p,a{
+        color: color("gris");
+        p{text-align: justify;
+        }
+      }
+  }
+ 
+  footer .content .box{
+    width: 33%;
+    transition: all 0.4s ease;
+  }
+  footer .content .topic{
+    font-size: 18px;
+    font-weight: 600;
+    color: $gris;
+    margin-bottom: 16px;
+  }
+
+
+  footer .content .lower .topic{
+    margin: 24px 0 5px 0;
+  }
+  footer .content .lower i{
+    padding-right: 16px;
+  }
+  footer .content .middle{
+    padding-left: 80px;
+    a{line-height: 32px;}
+  }
+
+  footer .content .right input[type="text"]{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    color: $rosado;
+    background: $gris;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    border: 2px solid;
+  }
+  footer .content .right input[type="submit"]{
+    height: 42px;
+    width: 100%;
+    font-size: 15px;
+    color: $gris;
+    background: $rosado;
+    outline: none;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 12px;
+    border: 2px solid;
+    transition: all 0.3s ease-in-out;
+  }
+  .content .right input[type="submit"]:hover{
+    background: none;
+    color: $rosado;
+  }
+  footer .content .media-icons a{
+    font-size: 16px;
+    height: 45px;
+    width: 45px;
+    display: inline-block;
+    text-align: center;
+    line-height: 43px;
+    margin: 30px 5px 0 0;
+    transition: all 0.3s ease;
+    &:hover{
+        border-color: $rosado;
+      }
+  }
+
+  footer .bottom{
+    width: 100%;
+    text-align: right;
+    color: #d9d9d9;
+    padding: 0 40px 5px 0;
+  }
+  footer .bottom a{
+    color: $rosado;
+  }
+  footer a{
+    transition: all 0.3s ease;
+    &:hover{
+        color: $rosado;
+    }
+  }
+
+  @media (max-width:1100px) {
+    footer .content .middle{
+      padding-left: 50px;
+    }
+  }
+  @media (max-width:950px){
+    footer .content .box{
+      width: 50%;
+    }
+    .content .right{
+      margin-top: 40px;
+    }
+  }
+  @media (max-width:560px){
+    footer{
+      position: relative;
+    }
+    footer .content .box{
+      width: 100%;
+      margin-top: 30px;
+    }
+    footer .content .middle{
+      padding-left: 0;
+    }
+  }
+
+/*Sobre nosotras y aprendiendo a usar extend*/
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.columnsobre {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  background-color: color("gris");
+  font-family: $font-stack;
+  h2{font-size: 20px;
+    font-family: $font-stack;
+    text-align: left;
+margin-top: 15px;}
+}
+
+@media screen and (max-width: 650px) {
+  .columnsobre {
+    width: 100%;
+    display: block;
+  }
+}
+
+.cardsobre {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.containersobre {
+  padding: 0 16px;
+  margin-bottom: 50px;
+  p{font-size: 15px;}
+}
+
+.containersobre::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+  
+%titlesobre{
+        color: grey;
+        margin-top: 15px;
+        font-size: 15px;
+      }
+
+      .titlesobre1 {
+        color: $morado;
+        margin-top: 15px;
+        font-size: 15px;
+      }
+
+.titlesobre2{
+    @extend %titlesobre;
+    color: $rosado;
+}
+
+.titlesobre3{
+    @extend %titlesobre;
+    color: $verde;
+}
+
+%buttonsobre {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  font-family: $font-stack;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  &:hover{
+      background-color: color("rosado");
+  }
+}
+
+.buttonsobre1{
+    @extend %buttonsobre;
+    background-color: color("morado");
+}
+
+.buttonsobre2{
+    @extend %buttonsobre;
+    background-color: color("naranjo");
+}
+
+.buttonsobre3{
+    @extend %buttonsobre;
+    background-color: color("verde");
+}
+
+.buttonsobre1:hover {
+  background-color: $rosado;
+}
+
+/*Contacto*/
+
+* {
+    box-sizing: border-box;
+  }
+
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    font-family: 'Montserrat';
+  }
+  
+  input[type=submit] {
+    background-color:#395173;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat';
+  }
+  
+  input[type=submit]:hover {
+    background-color: color("rosado");
+  }
+
+.containerhola {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-family: 'Montserrat';
+    background-color: $gris;
+  }
+  
+  .columnhola {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+  }
+  
+  .rowhola:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .imgcontact:hover{
+        -webkit-filter: grayscale(1);
+        filter: grayscale(1);
+     }
+
+  @media screen and (max-width: 600px) {
+    .columnhola, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+/*Ubicación*/
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+
+.div2 { grid-area: 2 / 1 / 6 / 3;
+background-color: color("gris");
+margin-top: 10px;
+margin-bottom: 20px;
+font-family: 'Montserrat';
+font-size: 15px;
+text-align: center;
+color: color("azul");
+font-style: italic;
+color: color("azul");
+}
+
+.div2 img{
+    width: 100%;
+    
+}
+
+.div3 { grid-area: 2 / 3 / 6 / 6; 
+;}
+
+.div3 .mapa{
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.div3{
+    margin-bottom: 20px;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+}
+
+/*Productos*/
+
+.product-filter {
+    display: flex;
+    h1 {
+        flex-grow: 1;
+        font-family: 'Montserrat';
+        color: color("azul");
+      }
+  }
+
+  .sort {
+    display: flex;
+  }
+
+  .collection-sort {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    color: color("azul");
+    option{
+        font-family: 'Montserrat';
+        color: color("rosado");
+    }
+  }
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product-card {
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .product-image img {
+    max-width: 100%;
+    cursor:pointer;
+  }
+
+  .product-info {
+    margin-top: auto;
+    font-family:'Montserrat';
+    text-align: center;
+    color: color("azul");
+  }
+
+  @media (max-width: 920px) {
+    .product-card {
+      flex: 1 21%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .product-card {
+      flex: 1 46%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-filter {
+      flex-direction: column;
+    }
+    .sort {
+      align-self: flex-start;
+    }
+  }
+
+/*Paginación*/
+
+  [data-pagination],
+[data-pagination] *,
+[data-pagination] *:before,
+[data-pagination] *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+}
+[data-pagination] {
+  font-size: 8pt;
+  line-height: 1;
+  font-weight: 400;
+  font-family: $font-stack;
+  -webkit-text-size-adjust: 100%;
+  margin: 1em auto;
+  text-align: center;
+  transition: font-size .2s ease-in-out;
+  background-color: $gris;
+}
+[data-pagination] ul {
+  list-style-type: none;
+  display: inline;
+  font-size: 100%;
+  margin: 0;
+  padding: .5em;
+}
+[data-pagination] ul li {
+  display: inline-block;
+  font-size: 100%;
+  width: auto;
+  border-radius: 3px;
+}
+[data-pagination] > a {
+  font-size: 140%;
+}
+[data-pagination] a {
+  color: $azul;
+  font-size: 100%;
+  font-family: $font-stack;
+  padding: .5em;
+}
+[data-pagination] a:focus,
+[data-pagination] a:hover {
+  color: $rosado;
+}
+[data-pagination] li.current {
+  background: rgba(0,0,0,.1)
+}
+
+/*Disabled*/
+
+[data-pagination] .disabled,
+[data-pagination] [hidden],
+[data-pagination] [disabled] {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.product-filter{
+  background-color: $gris;
+}
+@media (min-width: 350px) {
+  [data-pagination] {
+    font-size: 10pt;
+  }
+}
+@media (min-width: 500px) {
+  [data-pagination] {
+    font-size: 12pt;
+  }
+}
+@media (min-width: 700px) {
+  [data-pagination] {
+    font-size: 14pt;
+  }
+}
+@media (min-width: 900px) {
+  [data-pagination] {
+    font-size: 16pt;
+  }
+}
+
+/*Slideshow*/
+
+* {box-sizing: border-box}
+body {font-family: $font-stack; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/*Botones*/
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: $azul;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/*Fondo del botón*/
+.prev:hover, .next:hover {
+  background-color: $gris;
+}
+
+.text {
+  color: $azul;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  background-color: $gris;
+  opacity: 70%;
+}
+
+.numbertext {
+  color: $azul;
+  font-family: $font-stack;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: $rosado;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: $azul;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+/*Secciones*/
+* {
+  box-sizing: border-box;
+}
+
+.columnsec {
+  width: 100%;
+  padding: 2px;
+  margin-bottom: 5px;
+  margin-top: 2px;
+}
+
+.columnsec img{
+  cursor:pointer;
+}
+
+
+/*Nav*/
+
+* { box-sizing: border-box; padding: 0; margin: 0; } 
+
+body { 
+  font-family: $font-stack; 
+} 
+
+nav { 
+  background: $azul; padding: 5px 20px; } 
+
+ul { 
+  list-style-type: none; 
+} 
+
+a {
+  color: $gris; 
+  text-decoration: none; 
+} 
+
+a:hover { 
+  text-decoration: underline; 
+} 
+
+.logo a:hover { 
+  text-decoration: none; 
+} 
+
+.menu li { 
+  font-size: 16px; 
+  padding: 15px 5px; 
+  white-space: nowrap; 
+} 
+
+.logo a, .toggle a { 
+  font-size: 20px; 
+} 
+
+.button.secondary { 
+  border-bottom: 1px $rosado solid; 
+}
+
+/*Para móvil*/
+
+.menu { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  align-items: center; } 
+
+.toggle { 
+  order: 1; 
+} 
+
+.item.button { 
+  order: 2; 
+} 
+
+.item { 
+  width: 100%; 
+  text-align: center; 
+  order: 3; 
+  display: none; 
+} 
+
+.item.active { 
+  display: block; 
+}
+
+/*Para tablet*/ 
+
+@media all and (min-width: 600px) { .menu { justify-content: center; } 
+
+.logo { 
+  flex: 1; 
+} 
+
+.toggle { 
+  flex: 1; 
+  text-align: right; 
+} 
+
+.item.button { 
+  width: auto; 
+  order: 1; 
+  display: block; 
+} 
+
+.toggle { 
+  order: 2; 
+} 
+
+.button.secondary { 
+  border: 0; 
+} 
+
+.button a { 
+  padding: 7.5px 15px; 
+  background: $rosado; 
+  border: 1px $azul solid; 
+} 
+
+.button.secondary a {
+   background: transparent; 
+  } 
+
+.button a:hover { 
+  text-decoration: none; 
+} 
+
+.button:not(.secondary) a:hover { 
+  background: #D9751F; border-color: #005959; 
+} 
+
+.button.secondary a:hover { 
+  color: $gris; } 
+}
+
+/*Para desktop*/ 
+
+@media all and (min-width: 900px) { .item { display: block; width: auto; } 
+
+.toggle { 
+  display: none; 
+} 
+
+.logo { 
+  order: 0; 
+} 
+
+.item { 
+  order: 1; 
+} 
+
+.button { 
+  order: 2; 
+} 
+
+.menu li { 
+  padding: 15px 10px; 
+} 
+
+.menu li.button { 
+  padding-right: 0; } 
+}
+

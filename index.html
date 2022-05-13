@@ -1,19 +1,268 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
+
+<!--Ícono y título-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UFT-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="assets/Logo 1-1.png" type="image/x-icon">
 
 <!--Hoja de estilos-->
  
-<link rel="stylesheet" href="css\bescandi.css">
+<link rel="stylesheet" href="pruebanode\css\destino.css">
 
+<!--Google Fonts-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+<!--Font Awesome / Íconos-->
+<script src="https://kit.fontawesome.com/69f2dad0e2.js" crossorigin="anonymous"></script>
+
+<!--Título de la página-->
+<title>Inicio</title>
+<!--Incluyendo keywords-->
+<meta name="description" content="Be Scandi es una marca de moda de Chile, 
+orientada a que puedas crear tu armario cápsula. Descubre lo último en tendencia aquí.">
 </head>
+
+<!--Encabezado-->
 <body>
-    <h1>Superninja</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore totam soluta quae, distinctio alias maxime rem numquam ullam doloremque adipisci sint eum veritatis consequuntur excepturi enim dolores minus accusantium autem!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis aut, impedit sapiente eveniet, ipsum dicta voluptas ducimus quas amet nisi eius? Labore blanditiis sed debitis facilis ab in ex nam?</p>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error odit hic cumque ducimus temporibus id totam, dolores, magnam enim alias doloremque blanditiis quos minima sunt saepe dignissimos laborum tenetur iusto.</p>
+<header>
+<div class="grid-container-bannerlogo"> <!--Contenedor anuncio-->
+<img src="assets/envio1.png" height="100px" width="150px" class="responsive"> <!--Anuncio-->
+</header>
+</div>
 </body>
+
+<!--Navegación-->
+<body>
+    <section>
+      <nav> 
+        <ul class="menu"> 
+        <li class="item"><a href="index.html">Inicio</a></li> 
+        <li class="item"><a href="pages\sobre.html">Nosotras</a></li> 
+        <li class="item"><a href="pages\contacto.html">Contacto</a></li> 
+        <li class="item"><a href="pages\ubicacion.html">Ubicación</a></li> 
+        <li class="item"><a href="pages\productos.html">Productos</a></li> 
+        <li class="item button"><a href="#">Accede</a></li> 
+        <li class="item button secondary"><a href="#">Regístrate</a></li> 
+        <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li> </ul> </nav>
+    </body>
+    </section>
+
+    <!--Íconos-->
+<div class="menu-bar">
+    <i class="fa-solid fa-bars" style="color: #ebebeb"></i>
+    </div>
+    </nav>
+    </header>
+
+    <!--Un slideshow o carrusel-->
+<body>
+    <div class="slideshow-container">
+      
+    <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="assets/slide1.png" style="width:100%"> <!--Imagen 1-->
+    <div class="text">¡Compra nuestra colección de otoño!</div> <!--Pie de foto-->
+    </div>
+      
+    <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="assets/slide2.png" style="width:100%">
+    <div class="text">¡Compra nuestra colección de primavera!</div>
+    </div>
+      
+    <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="assets/slide3.png" style="width:100%">
+    <div class="text">¡Compra nuestra colección de invierno!</div>
+    </div>
+      
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+      
+    </div>
+    <br>
+      
+    <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+    
+    <!--Javascript-->
+    
+    <script>
+     let slideIndex = 1;
+     showSlides(slideIndex);
+        
+      function plusSlides(n) {
+      showSlides(slideIndex += n);
+       }
+    
+      function currentSlide(n) {
+       showSlides(slideIndex = n);
+        }
+        
+      function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+    </script>
+    </body>
+    </body>
+
+<!--Banner con titular-->
+<img src="assets/title2.png" width="200px" height="200px" class="responsive"> <!--Titular-->
+
+<!--Incluyendo un header-->
+<div class="header1">
+<h1>Moda ética y sostenible</h1>
+<p>Confeccionada por mujeres chilenas</p>
+</div>
+
+<!--Display de productos más vendidos-->
+
+<section class="products">
+<div class="product-card">
+<div class="product-image">
+<img src="assets/producto1.png"> <!--Imagen del producto-->
+</div>
+<div class="product-info">
+<h5>Bottom Filippa</h5> <!--Nombre del producto-->
+<h6>$14.990</h6> <!--Precio del producto-->
+</div>
+</div>
+  
+<div class="product-card">
+<div class="product-image">
+<img src="assets/producto2.png">
+</div>
+<div class="product-info">
+<h5>Blazer Mia</h5>
+<h6>$15.990</h6>
+</div>
+</div>
+  
+<div class="product-card">
+<div class="product-image">
+<img src="assets/producto3.png">
+</div>
+<div class="product-info">
+<h5>Top Sol</h5>
+<h6>$12.990</h6>
+</div>
+</div>
+  
+<div class="product-card">
+<div class="product-image">
+<img src="assets/producto4.png">
+</div>
+<div class="product-info">
+<h5>Kai Blouse</h5>
+<h6>$14.990</h6>
+</div>
+</div>
+  
+<div class="product-card">
+<div class="product-image">
+<img src="assets/producto5.png">
+</div>
+<div class="product-info">
+<h5>Sun Bustier</h5>
+<h6>$19.990</h6>
+</div>
+</div>
+  
+<div class="product-card">
+<div class="product-image">
+<img src="assets/producto6.png">
+</div>
+<div class="product-info">
+<h5>Cassie Sweater</h5>
+<h6>$16.990</h6>
+</div>
+</div>
+</section>
+
+<!--Secciones-->
+<img src="assets/busca.png" height="100px" width="150px" class="responsive"> <!--Titular-->
+
+<div class="rowsec">
+<div class="columnsec">
+<img src="assets/1.png" alt="Snow" class="responsive"> <!--Banner 1-->
+</div>
+<div class="rowsec">
+<div class="columnsec">
+<img src="assets/2.png" alt="Snow" class="responsive"> <!--Banner 2-->
+</div>
+</div>
+</div>
+</section>
+
+<!--Footer-->
+
+<footer>
+<!--Sección izquierda-->
+<div class="content">
+<div class="left box">
+<div class="upper">
+<div class="topic">Sobre nosotras</div>
+<p>Marca de moda circular creada en el año 2022.</p>
+</div>
+<div class="lower">
+<div class="topic">Contáctanos</div>
+<div class="phone">
+<a href="#"><i class="fas fa-phone-volume"></i>+56 9 6886 3452</a>
+</div>
+<div class="email">
+<a href="#"><i class="fas fa-envelope"></i>hola@bescandi.cl</a>
+</div>
+</div>
+</div>
+  
+<!--Sección del medio-->
+<div class="middle box">
+<div class="topic">Información</div>
+<div><a href="#">Envíos</a></div>
+<div><a href="#">Cambios y devoluciones</a></div>
+<div><a href="#">Términos y condiciones</a></div>
+</div>
+  
+<!--Sección de la derecha-->
+<div class="right box">
+<div class="topic">No te pierdas de las últimas novedades</div>
+<form action="#">
+<input type="text" placeholder="Ingresa tu correo electrónico">
+<input type="submit" name="" value="Suscribirse">
+<div class="media-icons">
+<a href="#"><i class="fab fa-tiktok"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-pinterest"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+</div>
+</form>
+</div>
+</div>
+<div class="bottom">
+<p>Todos los derechos reservados © 2022 <a href="#">Be Scandi</a></p>
+</div>
+</footer>
 </html>
